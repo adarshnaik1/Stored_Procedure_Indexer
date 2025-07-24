@@ -1,22 +1,23 @@
-CREATE PROCEDURE sp_get_customer
+CREATE PROCEDURE sp_get_customer_orders
     @cust_id INT
 AS
 BEGIN
-    SELECT name, email
-    FROM customer
-    WHERE id = @cust_id;
+    SELECT order_id, order_date, amount
+    FROM orders
+    WHERE customer_id = @cust_id;
+END;
 
-    EXEC sp_get_address @cust_id;
+CREATE PROCEDURE sp_get_customer_full_details
+    @cust_id INT
+AS
+BEGIN
+   
+    SELECT customer_id, customer_name, email
+    FROM customers
+    WHERE customer_id = @cust_id;
 
-    UPDATE customer
-    SET last_accessed = GETDATE()
-    WHERE id = @cust_id;
+    
+    EXEC sp_get_customer_orders @cust_id;
+END;
 
-    INSERT INTO access_log (cust_id, access_time)
-    VALUES (@cust_id, GETDATE());
-
-    DELETE FROM temp_session
-    WHERE cust_id = @cust_id;
-END
-GO
 

@@ -1,13 +1,28 @@
 {
-  "sp_get_customer": {
+  "sp_get_customer_orders": {
     "params": [
-      "@cust_idINT"
+      {
+        "name": "@cust_id",
+        "type": "INT"
+      }
     ],
     "calls": [],
     "tables": [
-      "access_log",
-      "temp_session",
-      "customer"
+      "orders"
+    ]
+  },
+  "sp_get_customer_full_details": {
+    "params": [
+      {
+        "name": "@cust_id",
+        "type": "INT"
+      }
+    ],
+    "calls": [
+      "sp_get_customer_orders"
+    ],
+    "tables": [
+      "customers"
     ]
   }
 }
