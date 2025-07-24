@@ -1,0 +1,13 @@
+{
+  "sp_get_customer": {
+    "params": [
+      "@cust_idINT"
+    ],
+    "calls": [],
+    "tables": [
+      "access_log",
+      "temp_session",
+      "customer"
+    ]
+  }
+}
