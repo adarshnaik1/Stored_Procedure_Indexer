@@ -122,7 +122,7 @@ The result will be saved in `index.json`.
 
 If you have suggestions, issues, or improvements — feel free to open an issue or contact the developer directly:
 
-📧 **adarsh.dev.contact@gmail.com**
+📧 **adarshnaik1**
 
 ---
 
